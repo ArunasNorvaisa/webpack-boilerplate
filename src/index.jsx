@@ -1,15 +1,15 @@
 import React from "react";
 import { render } from "react-dom";
-import HelloWorld from './components/HelloWorld';
+import App from './components/App';
 
 const wrapper = document.getElementById('app');
 
-function App() {
+function Main() {
   return (
     <div>
-      <HelloWorld />
+      <App />
     </div>
   );
 }
 
-render(<App />, wrapper);
+render(<Main />, wrapper);
