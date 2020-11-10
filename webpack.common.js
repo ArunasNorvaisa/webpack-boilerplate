@@ -1,71 +1,50 @@
-const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    index: "./src/index.jsx",
+    index: './src/index.jsx',
   },
   output: {
-    filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "build"),
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'build'),
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "WEBPACK.CONFIG",
-      template: "./src/index.html",
+      title: 'React movie database',
+      template: './src/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
-      chunkFilename: "[id].[contenthash].css",
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css',
     }),
   ],
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        include: path.resolve(__dirname, "src"),
+        include: path.resolve(__dirname, 'src'),
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
         },
       },
       {
-        test: /\.s?[ac]ss$/,
-        include: path.resolve(__dirname, "src"),
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              esModule: true,
-              modules: {
-                namedExport: true,
-              },
-            },
-          },
-          {
-            loader: "css-loader",
-            options: {
-              esModule: true,
-              modules: {
-                namedExport: true,
-                // localIdentName: "[name].[contenthash].[ext]",
-              },
-            },
-          },
-          "sass-loader",
-        ],
+        test: /\.s[ac]ss$/,
+        include: path.resolve(__dirname, 'src'),
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        include: path.resolve(__dirname, "src"),
+        include: path.resolve(__dirname, 'src'),
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
-              name: "[name].[ext]",
-              outputPath: "images/",
+              name: '[name].[ext]',
+              outputPath: 'images/',
               esModule: false,
             },
           },
@@ -74,6 +53,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".scss"],
+    extensions: ['.js', '.jsx', '.scss'],
   },
 };

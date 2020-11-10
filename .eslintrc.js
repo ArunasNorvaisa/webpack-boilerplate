@@ -1,25 +1,17 @@
 module.exports = {
-  parser: "babel-eslint",
+  parser: 'babel-eslint',
   env: {
     browser: true,
     es2021: true,
     node: true,
   },
-  extends: [
-    "eslint:recommended",
-    "prettier",
-    "prettier/react",
-    "plugin:jsx-a11y/recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-  ],
+  extends: ['airbnb', 'airbnb/hooks'],
   rules: {
-    "prettier/prettier": "error",
-    "no-console": "error",
+    'no-console': 'error',
   },
   settings: {
     react: {
-      version: "detect",
+      version: 'detect',
     },
   },
   parserOptions: {
@@ -27,7 +19,7 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 12,
-    sourceType: "module",
+    sourceType: 'module',
   },
-  plugins: ["react", "prettier"],
+  plugins: ['react'],
 };
